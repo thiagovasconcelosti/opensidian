@@ -1,6 +1,6 @@
 {
   "name": "opensidian",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open-source knowledge management system with MCP server, graph indexing, and real-time sync",
   "main": "dist/index.js",
   "type": "module",
@@ -30,6 +30,14 @@
   ],
   "author": "OpenSidian Contributors",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagovasconcelosti/opensidian.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thiagovasconcelosti/opensidian/issues"
+  },
+  "homepage": "https://github.com/thiagovasconcelosti/opensidian#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "cors": "^2.8.5",

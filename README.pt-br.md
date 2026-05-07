@@ -7,36 +7,36 @@
 [![CI](https://github.com/thiagovasconcelosti/opensidian/actions/workflows/ci.yml/badge.svg)](https://github.com/thiagovasconcelosti/opensidian/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/thiagovasconcelosti/opensidian/blob/main/LICENSE)
 
-**OpenSidian** is an open-source knowledge management system inspired by Obsidian. Create, organize, and connect Markdown notes with graph indexing, real-time sync, and plugin support.
+**OpenSidian** é um sistema de gerenciamento de conhecimento open-source inspirado no Obsidian. Permite criar, organizar e interconectar notas em Markdown com indexação de grafo, sincronização em tempo real e suporte a plugins.
 
-## Features
+## Funcionalidades
 
-- **Vaults**: Manage multiple note vaults
-- **Markdown editor**: Live preview with `[[wikilink]]` support
-- **Knowledge graph**: Interactive visualization with D3.js
-- **Sync**: Real-time via WebSocket
-- **Authentication**: JWT login with persistent sessions
-- **Themes**: Light/dark and custom themes via visual editor
-- **Plugins**: Extension API with hooks and commands
-- **MCP Server**: Model Context Protocol integration for AI tools
-- **REST API**: HTTP endpoints for integrations
-- **Docker**: Multi-stage containerization
+- **Vaults**: Gerenciar múltiplos cofres de notas
+- **Editor Markdown**: Preview ao vivo com suporte a `[[wikilink]]`
+- **Grafo de Conhecimento**: Visualização interativa com D3.js
+- **Sincronização**: Tempo real via WebSocket
+- **Autenticação**: Login com JWT e sessão persistente
+- **Temas**: Claro, escuro e temas customizáveis via editor visual
+- **Plugins**: API para extensões com hooks e comandos
+- **MCP Server**: Integração com IAs via Model Context Protocol
+- **REST API**: HTTP endpoints para integração
+- **Docker**: Containerização multi-stage
 
 ## Stack
 
-| Layer | Technology |
-|-------|------------|
+| Camada | Tecnologia |
+|--------|-----------|
 | Backend | Node.js 20+, TypeScript, Express |
 | Frontend | React 18, Vite, React Router |
 | Graph | D3.js (force simulation) |
 | Markdown | marked, front-matter |
 | Sync | WebSocket (ws) |
 | MCP | @modelcontextprotocol/sdk |
-| Tests | Vitest (79 tests, coverage >80%) |
+| Testes | Vitest (79 testes, cobertura >80%) |
 | CI/CD | GitHub Actions (Windows/Mac/Linux) |
 | Container | Docker multi-stage |
 
-## Quick start
+## Começar
 
 ```bash
 git clone https://github.com/thiagovasconcelosti/opensidian.git
@@ -47,9 +47,9 @@ npm test
 npm run dev
 ```
 
-Open: http://localhost:3000
+Acessar: http://localhost:3000
 
-## Structure
+## Estrutura
 
 ```
 opensidian/
@@ -63,73 +63,73 @@ opensidian/
 │       ├── api/       # HTTP client
 │       ├── components/ # UI components
 │       └── hooks/     # AuthContext, ThemeContext
-├── tests/             # 79 unit tests
+├── tests/             # 79 testes unitários
 ├── docker/            # Dockerfile + compose
-└── docs/              # Architecture
+└── docs/              # Arquitetura
 ```
 
-## REST API
+## API REST
 
 ### Auth
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| POST | `/auth/register` | Create account |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | `/auth/register` | Criar conta |
 | POST | `/auth/login` | Login |
-| GET | `/auth/me` | Current user |
+| GET | `/auth/me` | Dados do usuário |
 | POST | `/auth/logout` | Logout |
 
 ### Vaults
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/api/vaults` | List vaults |
-| POST | `/api/vaults` | Create vault |
-| GET | `/api/vaults/:id` | Open vault |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/api/vaults` | Listar vaults |
+| POST | `/api/vaults` | Criar vault |
+| GET | `/api/vaults/:id` | Abrir vault |
 
-### Notes
+### Notas
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/api/notes?vault=` | List notes |
-| POST | `/api/notes` | Create note |
-| GET | `/api/notes/:path?vault=` | Read note |
-| PUT | `/api/notes/:path?vault=` | Update note |
-| DELETE | `/api/notes/:path?vault=` | Delete note |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/api/notes?vault=` | Listar notas |
+| POST | `/api/notes` | Criar nota |
+| GET | `/api/notes/:path?vault=` | Ler nota |
+| PUT | `/api/notes/:path?vault=` | Atualizar |
+| DELETE | `/api/notes/:path?vault=` | Deletar |
 
 ### Graph
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/api/graph?vault=` | Full graph |
-| GET | `/api/graph/neighbors/:path?vault=` | Neighborhood |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/api/graph?vault=` | Grafo completo |
+| GET | `/api/graph/neighbors/:path?vault=` | Vizinhança |
 
-### Search
+### Busca
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/api/notes/search?vault=&q=` | Full-text search with ranking |
-| | `&tag=` | Filter by tag |
-| | `&after=` / `&before=` | Filter by date |
-| | `&hasBacklinks=true` | Only notes with backlinks |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/api/notes/search?vault=&q=` | Busca full-text com ranking |
+| | `&tag=` | Filtrar por tag |
+| | `&after=` / `&before=` | Filtrar por data |
+| | `&hasBacklinks=true` | Só notas com backlinks |
 
-### Themes
+### Temas
 
-| Method | Route | Description |
-|--------|-------|-------------|
-| GET | `/api/themes` | List themes |
-| POST | `/api/themes` | Save theme |
-| DELETE | `/api/themes/:name` | Delete theme |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/api/themes` | Listar temas |
+| POST | `/api/themes` | Salvar tema |
+| DELETE | `/api/themes/:name` | Deletar tema |
 
 ## Plugin API
 
-The plugin system lets you extend OpenSidian with custom functionality.
+O sistema de plugins permite estender o OpenSidian com funcionalidades customizadas.
 
 ### Interface
 
 ```typescript
 interface Plugin {
-  name: string;          // Unique identifier
+  name: string;          // Identificador único
   version: string;       // Semver
   onLoad(ctx: PluginContext): void;
   onUnload?(): void;
@@ -143,14 +143,14 @@ interface PluginContext {
 }
 ```
 
-### Available hooks
+### Hooks disponíveis
 
-| Hook | Trigger | Use |
+| Hook | Disparo | Uso |
 |------|---------|-----|
-| `note:pre-save` | Before saving | Modify content |
-| `note:post-save` | After saving | Side effects |
+| `note:pre-save` | Antes de salvar | Modificar conteúdo |
+| `note:post-save` | Após salvar | Side effects |
 
-### Example
+### Exemplo
 
 ```typescript
 import { Plugin, PluginContext } from '../../shared/types';
@@ -161,27 +161,27 @@ export default {
   onLoad(ctx: PluginContext) {
     ctx.registerCommand({
       id: 'meu-plugin:hello',
-      label: 'Say hello',
-      execute: () => console.log('Hello!'),
+      label: 'Dizer olá',
+      execute: () => console.log('Olá!'),
     });
     ctx.registerHook('note:post-save', (note) => {
-      console.log(`Note saved: ${note.path}`);
+      console.log(`Nota salva: ${note.path}`);
     });
   },
 } satisfies Plugin;
 ```
 
-To load it, place the file under `./plugins/` and restart the server.
+Para carregar, coloque o arquivo em `./plugins/` e reinicie o servidor.
 
 ## MCP Server (Model Context Protocol)
 
-The MCP server allows AI tools (Claude, etc.) to interact with OpenSidian via stdio.
+O servidor MCP permite que IAs (Claude, etc.) interajam com o OpenSidian via stdio.
 
 ```bash
 npx tsx src/mcp/server.ts
 ```
 
-Or via the published npm package:
+Ou via pacote npm:
 
 ```bash
 npx opensidian-mcp
@@ -189,7 +189,7 @@ npx opensidian-mcp
 
 ### Configuração no Claude Desktop
 
-Add to `claude_desktop_config.json`:
+Adicione no `claude_desktop_config.json`:
 
 ```json
 {
@@ -202,11 +202,11 @@ Add to `claude_desktop_config.json`:
 }
 ```
 
-### Exposed tools
+### Ferramentas expostas
 
 - `vault_list`, `vault_open`, `vault_create`
 - `note_create`, `note_read`, `note_update`, `note_delete`
-- `note_search` — search with optional filters: `tag`, `after`, `before`, `hasBacklinks`
+- `note_search` — busca com filtros opcionais: `tag`, `after`, `before`, `hasBacklinks`
 - `graph_get`, `graph_neighbors`
 
 ## Docker
@@ -215,23 +215,23 @@ Add to `claude_desktop_config.json`:
 docker-compose -f docker/docker-compose.yml up -d
 ```
 
-Or build manually:
+Ou build manual:
 
 ```bash
 docker build -f docker/Dockerfile -t opensidian .
 docker run -p 3000:3000 -p 3001:3001 -v ./vaults:/app/vaults opensidian
 ```
 
-## Tests
+## Testes
 
 ```bash
-npm test               # 79 tests
-npm run test:coverage  # Coverage >80%
+npm test               # 79 testes
+npm run test:coverage  # Cobertura >80%
 ```
 
 ## Milestones
 
-### v1.0 (7 phases)
+### v1.0 (7 fases)
 
 | Fase | Status |
 |------|--------|
@@ -243,7 +243,7 @@ npm run test:coverage  # Coverage >80%
 | 6. Themes | ✅ |
 | 7. Polish & Release | ✅ |
 
-### v2.0 — Full-text search (3 phases)
+### v2.0 — Busca Full-Text (3 fases)
 
 | Fase | Status |
 |------|--------|
@@ -251,8 +251,8 @@ npm run test:coverage  # Coverage >80%
 | 9. API de Busca (REST + MCP + filtros + highlighting) | ✅ |
 | 10. Frontend de Busca (painel avançado com filtros visuais) | ✅ |
 
-**79 tests** | **Coverage >80%** | **TypeScript build** | **Docker** | **CI/CD**
+**79 testes** | **Cobertura >80%** | **Build TypeScript** | **Docker** | **CI/CD**
 
-## License
+## Licença
 
-MIT. See [LICENSE](https://github.com/thiagovasconcelosti/opensidian/blob/main/LICENSE).
+MIT. Veja [LICENSE](https://github.com/thiagovasconcelosti/opensidian/blob/main/LICENSE).
