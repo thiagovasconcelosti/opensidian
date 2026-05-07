@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.planning/
+
+# Build output
+dist/
+build/
+
+# Test coverage
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Vaults (user data)
+vaults/
+local/
+
+# Data
+data/
+
+# Planning (keep local)
+
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Docker
+.dockerignore
+
+# Compiled files
+*.tsbuildinfo

@@ -1,0 +1,65 @@
+{
+  "name": "opensidian",
+  "version": "1.0.0",
+  "description": "Open-source knowledge management system with MCP server, graph indexing, and real-time sync",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "opensidian-mcp": "./dist/mcp/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "typecheck": "tsc --noEmit",
+    "prepare": "node scripts/prepare.mjs"
+  },
+  "keywords": [
+    "knowledge-management",
+    "notes",
+    "markdown",
+    "graph",
+    "mcp",
+    "plugin",
+    "obsidian"
+  ],
+  "author": "OpenSidian Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "cors": "^2.8.5",
+    "d3": "^7.9.0",
+    "express": "^4.21.0",
+    "front-matter": "^4.0.2",
+    "gray-matter": "^4.0.3",
+    "marked": "^14.1.2",
+    "ws": "^8.18.0",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/d3": "^7.4.3",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.0",
+    "@types/ws": "^8.5.12",
+    "@vitest/coverage-v8": "^2.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.11.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  opensidian:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: opensidian
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - ./vaults:/app/vaults
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SYNC_PORT=3001
+      - VAULT_PATH=/app/vaults
+      - SYNC_ENABLED=true
+      - PLUGINS_ENABLED=true
+    networks:
+      - opensidian-network
+
+  opensidian-mcp:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: opensidian-mcp
+    restart: unless-stopped
+    command: ["node", "dist/mcp/server.js"]
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./vaults:/app/vaults
+    environment:
+      - NODE_ENV=production
+    networks:
+      - opensidian-network
+    depends_on:
+      - opensidian
+
+networks:
+  opensidian-network:
+    driver: bridge
